@@ -23,6 +23,7 @@ public class SeqQueue<T> extends SeqList<T> implements MyQueue<T>{
 	@Override
 	public T getHead() {
 		// TODO Auto-generated method stub
+    return null;
 	}
 
 }
