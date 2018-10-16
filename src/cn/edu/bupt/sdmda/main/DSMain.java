@@ -44,7 +44,7 @@ public class DSMain {
 
 		System.out.println("=======");
 
-		MyLinkedList<Integer> lnkl = new MyLinkedList<Integer>(args.length, 0);
+		MyLinkedList<Integer> lnkl = new MyLinkedList<Integer>(args.length - 1, 0);
 		for(int i=0; i<args.length-1; ++i){
 			lnkl.set(i, Integer.parseInt(args[i+1]));
 		}
