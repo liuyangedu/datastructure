@@ -20,7 +20,7 @@ public class NumBaseConvertor {
 	}
 	
 	public static String Convert(String src, Base srcBase, Base desBase) {
-        // convert src from srcBase to desBase
+        // convert src from srcBase to DEC 
 
         // construct a empty stack
         
