@@ -9,6 +9,7 @@ import cn.edu.bupt.sdmda.ds.linearlist.SeqStack;
 import cn.edu.bupt.sdmda.ds.tree.BiTree;
 import cn.edu.bupt.sdmda.ds.tree.BiTreeNode;
 import cn.edu.bupt.sdmda.ds.tree.TraverseFuction;
+import cn.edu.bupt.sdmda.main.NumBaseConvertor.Base;
 
 public class DSMain {
 	public static void main(String[] args) {
@@ -25,6 +26,9 @@ public class DSMain {
 				break;
 			case "calculator":
 				calculator(args[1]);
+				break;
+			case "convert":
+				convert(args[1], args[2], args[3]);
 				break;
 			case "tree":
 				testTreeMain(args);
@@ -182,6 +186,29 @@ public class DSMain {
 		System.out.println(c.calc());
 	}
 
+	public static void convert(String src, String sBase, String dBase){
+		System.out.println( NumBaseConvertor.Convert(
+				src, 
+				parseBase(sBase), 
+				parseBase(dBase)));
+	}
+	
+	private static Base parseBase(String base) {
+		switch(base){
+		case "HEX":
+			return Base.HEX;
+		case "DEC":
+			return Base.DEC;
+		case "OCT":
+			return Base.OCT;
+		case "BIN":
+			return Base.BIN;
+		default:
+			return Base.DEC;
+		}
+
+	}
+	
 	public static void testTreeMain(String[] args){
 		Integer[] data = new Integer[args.length-1];
 		for(int i=0;i<data.length;++i){
