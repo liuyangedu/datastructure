@@ -7,6 +7,10 @@ import java.util.Stack;
 
 public class Calculator {
 
+    // some test case 
+    // (2-3*4)-(4*(3*3-1)+3)
+    // (2-3*4)-(4*(3*3+(-1))+3)
+    // -123/(4-1)+3*(4-86)+98*2
 	String exp;
 	static ArrayList<Character> ops = new ArrayList<>();
 
