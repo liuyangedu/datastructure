@@ -1,6 +1,9 @@
 package cn.edu.bupt.sdmda.main;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 import cn.edu.bupt.sdmda.ds.linearlist.LinearList;
 import cn.edu.bupt.sdmda.ds.linearlist.LinkedQueue;
 import cn.edu.bupt.sdmda.ds.linearlist.LinkedStack;
@@ -10,12 +13,13 @@ import cn.edu.bupt.sdmda.ds.linearlist.SeqQueue;
 import cn.edu.bupt.sdmda.ds.linearlist.SeqStack;
 import cn.edu.bupt.sdmda.ds.tree.BiTree;
 import cn.edu.bupt.sdmda.ds.tree.BiTreeNode;
-import cn.edu.bupt.sdmda.ds.tree.TraverseFuction;
 import cn.edu.bupt.sdmda.main.NumBaseConvertor.Base;
 
 public class DSMain {
 	public static void main(String[] args) {
-				
+
+
+
 		if(args.length>=2){
 			switch(args[0]){
 			case "linearlist":
@@ -36,36 +40,39 @@ public class DSMain {
 			case "tree":
 				testTreeMain(args);
 				break;
+			case "huffman":
+				testHuffmanMain(args);
+				break;
 			}
 		}
-		
+
 	}
-	
+
 	public static void testLinearListMain(String[] args) {
 		SeqList<Integer> seql = new SeqList<Integer>(args.length-1, 0);
 		for(int i=0; i<args.length-1; ++i){
 			seql.set(i, Integer.parseInt(args[i+1]));
 		}
 		testLinearList(seql);
-				
+
 		System.out.println("=======");
-		
+
 		MyLinkedList<Integer> lnkl = new MyLinkedList<Integer>(args.length, 0);
 		for(int i=0; i<args.length-1; ++i){
 			lnkl.set(i, Integer.parseInt(args[i+1]));
 		}
 		testLinearList(lnkl);
 	}
-	
-	
+
+
 	private static void testLinearList(LinearList<Integer> ll){
 		Integer ele1 = ll.get(0)+ll.get(1);
 		Integer ele2 = ll.get(0)-ll.get(1);
 		Integer ele3 = ll.get(0)*ll.get(1);
-		
+
 		// print size and all
 		printInfoOfLinearList(ll);
-		
+
 		// insert in head
 		// insert in mid
 		// insert in tail
@@ -73,10 +80,10 @@ public class DSMain {
 		ll.insert(0, ele1);
 		ll.insert(ll.getSize()/2, ele2);
 		ll.insert(ll.getSize(), ele3);
-		
+
 		// print size and all
 		printInfoOfLinearList(ll);
-		
+
 		// delete in head
 		// delete in mid
 		// delete in tail
@@ -85,28 +92,28 @@ public class DSMain {
 		System.out.print(ll.deleteAt(0)+"\t");
 		System.out.print(ll.deleteAt(ll.getSize()/2)+"\t");
 		System.out.println(ll.deleteAt(ll.getSize()-1));
-		
+
 		// print size and all
 		printInfoOfLinearList(ll);
-		
+
 		// find element like the tail
 		// delete element like the tail
 		System.out.println("finding last element");
 		Integer found = ll.find(ll.get(ll.getSize()-1));
 		System.out.println(found);
 		ll.delete(ll.get(found));
-		
+
 		// print size and all
 		printInfoOfLinearList(ll);
-		
+
 		// clear
 		System.out.println("clearing");
 		ll.clear();
 		// print size and all
 		printInfoOfLinearList(ll);
 	}
-	
-	
+
+
 
 	private static void printInfoOfLinearList(LinearList<Integer> ll){
 		System.out.println("List Summay:");
@@ -116,12 +123,12 @@ public class DSMain {
 		}
 		System.out.println("");
 	}
-	
+
 	public static void testStackMain(String[] args){
-		
+
 		SeqStack<String> s = new SeqStack<String>();
 		System.out.println("Push and pop half of input");
-		// push 
+		// push
 		int i=1;
 		for(;i<args.length/2;++i){
 			s.push(args[i]);
@@ -137,13 +144,13 @@ public class DSMain {
 		while(!s.isEmpty()){
 			System.out.println(s.pop());
 		}
-		
-		
-		
-		
+
+
+
+
 		LinkedStack<String> ls = new LinkedStack<>();
 		System.out.println("Push and pop half of input");
-		// push 
+		// push
 		i=1;
 		for(;i<args.length/2;++i){
 			ls.push(args[i]);
@@ -159,13 +166,13 @@ public class DSMain {
 		while(!ls.isEmpty()){
 			System.out.println(ls.pop());
 		}
-		
+
 	}
-	
+
 	public static void testQueueMain(String[] args){
 		SeqQueue<String> sq = new SeqQueue<String>();
 		System.out.println("Offer and poll half of input");
-		// offer 
+		// offer
 		int i=1;
 		for(;i<args.length/2;++i){
 			sq.offer(args[i]);
@@ -181,11 +188,11 @@ public class DSMain {
 		while(!sq.isEmpty()){
 			System.out.println(sq.poll());
 		}
-		
-		
+
+
 		LinkedQueue<String> lq = new LinkedQueue<String>();
 		System.out.println("Offer and poll half of input");
-		// offer 
+		// offer
 		i=1;
 		for(;i<args.length/2;++i){
 			lq.offer(args[i]);
@@ -202,19 +209,19 @@ public class DSMain {
 			System.out.println(lq.poll());
 		}
 	}
-	
+
 	public static void calculator(String exp){
 		Calculator c = new Calculator(exp);
 		System.out.println(c.calc());
 	}
-	
+
 	public static void convert(String src, String sBase, String dBase){
 		System.out.println( NumBaseConvertor.Convert(
-				src, 
-				parseBase(sBase), 
+				src,
+				parseBase(sBase),
 				parseBase(dBase)));
 	}
-	
+
 	private static Base parseBase(String base) {
 		switch(base){
 		case "HEX":
@@ -230,33 +237,68 @@ public class DSMain {
 		}
 
 	}
-	
+
 	public static void testTreeMain(String[] args){
 		Integer[] data = new Integer[args.length-1];
 		for(int i=0;i<data.length;++i){
 			data[i] = Integer.parseInt(args[i+1]);
+			if(data[i]==-1)	data[i] = null;
 		}
+
 		BiTree<Integer> tree = new BiTree<>(data);
-		PrintTraverse<Integer> func = new PrintTraverse<>();
-		tree.preOrder(tree.getRoot(), func);
-		System.out.println("=====");
-		tree.inOrder(tree.getRoot(), func);
-		System.out.println("=====");
-		tree.postOrder(tree.getRoot(), func);
-		System.out.println("=====");
-	}
-	
-	
-}
 
+		PrintTree(tree);
+		System.out.println("depth:" + tree.getDepth(tree.getRoot()));
 
-class PrintTraverse<T> implements TraverseFuction<T>{
+		BiTreeNode<Integer> n =tree.searchInOrder(tree.getRoot(), data[data.length/2]);
+		n.setLeft(new BiTreeNode<Integer>(data[data.length/2]*3));
+		PrintTree(tree);
+		System.out.println("depth:" + tree.getDepth(tree.getRoot()));
 
-	@Override
-	public void tranverse(BiTreeNode<T> node) {
-		// TODO Auto-generated method stub
-		System.out.println(node.getData());
 	}
 
-	
+	private static <T> void PrintTree(BiTree<T> tree){
+		tree.clearQueue();
+		System.out.println("=====preOrder=====");
+		tree.preOrder(tree.getRoot());
+		printQueue(tree.getQueue());
+		tree.clearQueue();
+
+		System.out.println("=====inOrder=====");
+		tree.clearQueue();
+		tree.inOrder(tree.getRoot());
+		printQueue(tree.getQueue());
+		tree.clearQueue();
+
+		System.out.println("=====postOrder=====");
+		tree.clearQueue();
+		tree.postOrder(tree.getRoot());
+		printQueue(tree.getQueue());
+		tree.clearQueue();
+
+		System.out.println("=====levelOrder=====");
+		tree.clearQueue();
+		tree.levelOrder();
+		printQueue(tree.getQueue());
+		tree.clearQueue();
+
+		System.out.println("=====end=====");
+	}
+
+	private static <T> void printQueue(LinkedList<BiTreeNode<T>> queue){
+		for(BiTreeNode<T> n : queue){
+			System.out.println(n.getData());
+		}
+	}
+
+	public static void testHuffmanMain(String[] args){
+		ArrayList<Symbol> ls = new ArrayList<>();
+		for(int i=1; i<args.length; i+=2){
+			ls.add(new Symbol(args[i], Double.parseDouble(args[i+1])));
+		}
+		HuffmanTree ht = new HuffmanTree(ls);
+		System.out.println(ht.getSymbolTable());
+	}
+
+
 }
