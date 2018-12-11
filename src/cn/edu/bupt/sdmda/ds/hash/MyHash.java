@@ -48,6 +48,11 @@ public class MyHash<K, V> implements IHashTable<K, V> {
     }
 
     @Override
+    public V remove(K key) {
+        return null;
+    }
+
+    @Override
     public int getIdx(K key) {
         // design a method to get index from key
         return 0;

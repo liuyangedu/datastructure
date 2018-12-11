@@ -328,25 +328,28 @@ public class DSMain {
 	}
 
 	public static void testHashMain(String[] args) {
-		MyHash<String, String> mh = new MyHash<>();
+    MyHash<String, String> mh = new MyHash<>();
 		List<String> keys = new ArrayList<>();
 		for (int i = 0; i < (args.length - 1) / 2; ++i) {
 			mh.put(args[2 * i + 1], args[2 * i + 2]);
 			keys.add(args[2 * i + 1]);
 		}
 
-		for (int i = 1; i < args.length; ++i) {
-			System.out.println(mh.get(args[i]));
+		for (int i = 0; i < keys.size(); ++i) {
+			System.out.println("Key:"+keys.get(i)+"\t"+mh.get(keys.get(i)));
 		}
 
 		mh.put(keys.get(keys.size() / 2), "**FOR TEST**");
-
 		System.out.println("=======");
-
-		for (int i = 1; i < args.length; ++i) {
-			System.out.println(mh.get(args[i]));
+		for (int i = 0; i < keys.size(); ++i) {
+			System.out.println("Key:"+keys.get(i)+"\t"+mh.get(keys.get(i)));
 		}
 
+		mh.remove(keys.get(keys.size() / 2));  
+		System.out.println("=======");
+		for (int i = 0; i < keys.size(); ++i) {
+			System.out.println("Key:"+keys.get(i)+"\t"+mh.get(keys.get(i)));
+		}
 	}
 
 }
