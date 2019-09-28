@@ -34,7 +34,8 @@ public class DSMain {
 				calculator(args[1]);
 				break;
 			case "convert":
-				convert(args[1], args[2], args[3]);
+				convert(args[1], Integer.parseInt(args[2]), 
+					Integer.parseInt(args[3]));
 				break;
 			case "tree":
 				testTreeMain(args);
@@ -213,24 +214,11 @@ public class DSMain {
 		System.out.println(c.calc());
 	}
 
-	public static void convert(String src, String sBase, String dBase) {
-		System.out.println(NumBaseConvertor.Convert(src, parseBase(sBase), parseBase(dBase)));
-	}
+        public static void convert(String src, int sBase, int dBase) {
+                System.out.println(NumBaseConvertor.Convert(src, sBase, dBase));
+        }
 
-	private static Base parseBase(String base) {
-		switch (base) {
-		case "HEX":
-			return Base.HEX;
-		case "DEC":
-			return Base.DEC;
-		case "OCT":
-			return Base.OCT;
-		case "BIN":
-			return Base.BIN;
-		default:
-			return Base.DEC;
-		}
-	}
+	
 
 	public static void testTreeMain(String[] args) {
 		Integer[] data = new Integer[args.length - 1];
