@@ -1,49 +1,28 @@
 package cn.edu.bupt.sdmda.main;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import cn.edu.bupt.sdmda.ds.linearlist.SeqStack;
 
 public class NumBaseConvertor {
-	public enum Base {
-		BIN, OCT, DEC, HEX
+	
+	public final static char[] digits=
+		{'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};;
+	
+	
+	public static int toDec(String number, int base){
+		return 0;
 	}
 	
-	private final static Map<Base, Integer> map;
-	static{
-		map = new HashMap<Base, Integer>();
-		map.put(Base.BIN, 2);
-		map.put(Base.OCT, 8);
-		map.put(Base.DEC, 10);
-		map.put(Base.HEX, 16);
-	}
-	
-	public static String Convert(String src, Base srcBase, Base desBase) {
-        // convert src from srcBase to DEC 
-
-        // construct a empty stack
-        
-        // divide and push reminder to stack
-        // Note the last reminder
-        
-        // convert and concatenate the reminder in stack
-        
+	public static String Convert(int number, int base){
+		if(base>digits.length)
+			throw new RuntimeException(String.format(
+					"base should not larger than {0}, but got {1}",
+					digits.length, base));
 		return "";
 	}
 	
-	// convert any src to dec
-	private static int toDec(String src, Base srcBase) {
-		return 0;
-	}
 	
-    // convert a char to int from srcBase
-	private static int toDec(char src, Base srcBase) {
-		return 0;
-	}
 	
-    // convert a small int to char
-	private static char decToAny(int src){
-        return 'a';
+	public static String Convert(String number, int srcBase, int desBase) {
+		return Convert( toDec(number, srcBase),desBase);
 	}
 }
