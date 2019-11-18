@@ -6,8 +6,8 @@ public class MyHash<K, V> implements IHashTable<K, V> {
 
     private LinkedList<Node>[] _tables;
     private final int INIT_CAP = 1 << 4;
-    // capasity of this hash table
-    private int _capasity;
+    // capacity of this hash table
+    private int _capacity;
     // number of stored elements in the hash table
     private int _eleNum;
     // a factor less than 1
