@@ -36,6 +36,16 @@ public class DSMain {
 				convert(args[1], Integer.parseInt(args[2]), 
 					Integer.parseInt(args[3]));
 				break;
+			case "bracketsmatch":
+				boolean res = false;
+				if(args.length==2) {
+					res = BracketsMatch.match(args[1]);
+				}
+				if(args.length==3) {
+					res = BracketsMatch.match(args[1], args[2]);
+				}
+				System.out.println("Brackets match result: " + res);
+				break;
 			case "tree":
 				testTreeMain(args);
 				break;
@@ -47,6 +57,9 @@ public class DSMain {
 				break;
 			case "hash":
 				testHashMain(args);
+				break;
+			case "printer":
+				testPrinter(args);
 				break;
 			}
 		}
@@ -337,6 +350,10 @@ public class DSMain {
 		for (int i = 0; i < keys.size(); ++i) {
 			System.out.println("Key:"+keys.get(i)+"\t"+mh.get(keys.get(i)));
 		}
+	}
+	
+	public static void testPrinter(String[] args) {
+		PrinterSimulator.main(args);
 	}
 
 }

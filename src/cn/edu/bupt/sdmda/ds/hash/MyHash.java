@@ -18,7 +18,7 @@ public class MyHash<K, V> implements IHashTable<K, V> {
         // init _table
 
 
-        _capasity = INIT_CAP;
+        _capacity = INIT_CAP;
         _eleNum = 0;
         _factor = 0.75f;
     }

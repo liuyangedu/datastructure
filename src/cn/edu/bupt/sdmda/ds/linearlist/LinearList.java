@@ -5,8 +5,8 @@ public interface LinearList<T> {
 	boolean isEmpty();
 	int getSize();
 	void clear();
-    void insert(int i, T t);
-    void delete(T t);
+	void insert(int i, T t);
+	void delete(T t);
 	T deleteAt(int i);
 	T get(int i);
 	void set(int i, T t);
