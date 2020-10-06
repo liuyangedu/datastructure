@@ -15,7 +15,7 @@ public class NumBaseConvertor {
 	public static String Convert(int number, int base){
 		if(base>digits.length)
 			throw new RuntimeException(String.format(
-					"base should not larger than {0}, but got {1}",
+					"base should not larger than %d, but got %d",
 					digits.length, base));
 		return "";
 	}
