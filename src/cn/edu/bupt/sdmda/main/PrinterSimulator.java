@@ -31,9 +31,7 @@ public class PrinterSimulator {
 		
 		// printer tick
 		_printer.tick(_currTick);
-		
-		
-		_currTick++;
+				
 	}
 
 	// default setting if parsing failed
